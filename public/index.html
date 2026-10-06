@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Дневник смен водителя</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <p class="brand">Дневник смен</p>
+        <h1>Поездки водителя</h1>
+        <p class="lead">Сводка и список поездок за выбранный день</p>
+      </header>
+
+      <section class="day-switcher" aria-label="Выбор дня">
+        <button type="button" id="prev-day" class="nav-btn" aria-label="Предыдущий день">
+          ←
+        </button>
+        <label class="date-label">
+          <span class="sr-only">Дата</span>
+          <input type="date" id="date-input" />
+        </label>
+        <button type="button" id="next-day" class="nav-btn" aria-label="Следующий день">
+          →
+        </button>
+      </section>
+
+      <section class="summary" id="summary" aria-live="polite">
+        <!-- заполняется из JS -->
+      </section>
+
+      <section class="trips-section">
+        <div class="section-head">
+          <h2>Поездки</h2>
+          <button type="button" id="toggle-form" class="ghost-btn">+ Добавить</button>
+        </div>
+
+        <form id="trip-form" class="trip-form hidden" novalidate>
+          <div class="form-grid">
+            <label>
+              Начало
+              <input type="datetime-local" name="start" required />
+            </label>
+            <label>
+              Окончание
+              <input type="datetime-local" name="end" required />
+            </label>
+            <label>
+              Сумма (₸)
+              <input type="number" name="amount" min="1" step="1" required />
+            </label>
+            <label>
+              Комиссия (₸)
+              <input type="number" name="commission" min="0" step="1" required />
+            </label>
+            <label>
+              Оплата
+              <select name="payment" required>
+                <option value="cash">Наличные</option>
+                <option value="card">Карта</option>
+              </select>
+            </label>
+            <label>
+              ID (необязательно)
+              <input type="text" name="id" placeholder="t6" />
+            </label>
+          </div>
+          <p id="form-error" class="form-error" role="alert" hidden></p>
+          <p id="form-ok" class="form-ok" role="status" hidden></p>
+          <button type="submit" class="primary-btn">Сохранить поездку</button>
+        </form>
+
+        <ul id="trips-list" class="trips-list"></ul>
+        <p id="empty" class="empty hidden">За этот день поездок нет</p>
+      </section>
+    </div>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
