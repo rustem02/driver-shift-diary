@@ -29,6 +29,20 @@ npm start
 
 Данные лежат в `data/trips.json`.
 
+## Скриншоты
+
+Сводка и список поездок за день:
+
+![Сводка за день](docs/screenshots/day-summary.png)
+
+Форма добавления поездки:
+
+![Форма добавления поездки](docs/screenshots/add-trip-form.png)
+
+День с добавленной поездкой:
+
+![День с поездкой](docs/screenshots/day-with-trip.png)
+
 ## Тесты
 
 ```bash
